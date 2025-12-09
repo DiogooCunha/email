@@ -1,0 +1,10 @@
+# <type>(<scope>): <short-summary>
+# Example: feat(api): add feedback message after purchase
+
+# Body (optional):
+# - What changed?
+# - Why was it changed?
+# - Any technical notes?
+
+# Pair Programming: James
+# Issues: Closes #123 (optional)
