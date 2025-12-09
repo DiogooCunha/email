@@ -121,7 +121,7 @@ const EmailField = () => {
                 <Textarea
                   id='content'
                   placeholder='Add any additional content'
-                  className='resize-none'
+                  className='resize-none break-all'
                   onChange={(e) => setContent(e.target.value)}
                 />
               </Field>

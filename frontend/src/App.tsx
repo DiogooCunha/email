@@ -1,4 +1,4 @@
-import EmailField from "./components/shared/emailField";
+import EmailField from "./components/shared/EmailField";
 
 const App = () => {
   return (
