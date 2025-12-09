@@ -1,10 +1,14 @@
 import EmailField from "./components/shared/EmailField";
+import Navbar from "./components/shared/Navbar";
 
 const App = () => {
   return (
-    <div className='flex justify-center items-center h-screen'>
-      <EmailField />
-    </div>
+    <>
+      <Navbar />
+      <div className='flex justify-center items-center h-screen'>
+        <EmailField />
+      </div>
+    </>
   );
 };
 

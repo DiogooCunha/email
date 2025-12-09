@@ -37,16 +37,15 @@ const EmailField = () => {
 
       const resultado = await res.json();
       console.log(resultado);
-      const now = new Date();
 
       if (!res.ok) {
         toast.warning("Something went wrong", {
-          description: formatEmailDate(now),
+          description: formatEmailDate(new Date()),
         });
       }
 
       toast.success("Email has been sent", {
-        description: formatEmailDate(now),
+        description: formatEmailDate(new Date()),
       });
     } catch (error) {
       console.error(error);
