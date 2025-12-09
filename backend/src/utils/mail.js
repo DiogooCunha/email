@@ -20,7 +20,10 @@ const getEmailTemplate = (data) => {
         <!-- Tabela centralizada -->
         <table role="presentation" style="width: 600px; margin: 0 auto; border-collapse: collapse; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
           
-          <!-- Header -->
+        ${
+          title
+            ? `
+            <!-- Header -->
           <tr>
             <td style="padding: 40px 30px; background-color: #2c3e50; text-align: center;">
               <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 600;">
@@ -28,6 +31,10 @@ const getEmailTemplate = (data) => {
               </h1>
             </td>
           </tr>
+          `
+            : ""
+        }
+          
           
           <!-- Content -->
           <tr>

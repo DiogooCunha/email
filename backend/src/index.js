@@ -2,7 +2,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
-import { sendEmail } from "./utils/mail.js";
+import cors from "cors";
 
 import emailRoutes from "./routes/email.routes.js";
 
@@ -10,6 +10,7 @@ const app = express();
 const port = 3333;
 
 // Middleware
+app.use(cors());
 app.use(express.json());
 
 // Routes
