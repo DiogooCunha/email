@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router-dom";
 import EmailField from "./components/shared/EmailField";
 import Navbar from "./components/shared/Navbar";
 
@@ -6,7 +7,9 @@ const App = () => {
     <>
       <Navbar />
       <div className='flex justify-center items-center h-screen'>
-        <EmailField />
+        <Routes>
+          <Route path='/send-email' element={<EmailField />} />
+        </Routes>
       </div>
     </>
   );
