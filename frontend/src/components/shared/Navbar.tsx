@@ -1,5 +1,6 @@
 import { navLinks } from "@/constants";
 import { Mail, Search } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -10,20 +11,20 @@ const Navbar = () => {
         <ul className='flex justify-center items-center gap-8'>
           {navLinks.map(({ label, link }) => (
             <li key={label}>
-              <a
-                href={link}
+              <NavLink
+                to={link}
                 className='hidden md:block text-white opacity-80 cursor-pointer hover:opacity-100 transition-all duration-300 ease-in-out'
               >
                 {label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
 
-        <div className="flex justify-center items-center">
-            <button className="bg-transparent border-none outline-none cursor-pointer hover:-translate-y-0.5 transition-all duration-300 ease-in-out size-5">
-                <Search />
-            </button>
+        <div className='flex justify-center items-center'>
+          <button className='bg-transparent border-none outline-none cursor-pointer hover:-translate-y-0.5 transition-all duration-300 ease-in-out size-5'>
+            <Search />
+          </button>
         </div>
       </nav>
     </header>
