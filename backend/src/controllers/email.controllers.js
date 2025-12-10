@@ -1,3 +1,4 @@
+import { saveEmail } from "../models/email.models.js";
 import { sendEmail } from "../utils/mail.js";
 
 export const email = (req, res) => {
@@ -18,6 +19,8 @@ export const emailSend = async (req, res) => {
   try {
     const { to, subject, title, content, buttonText, buttonUrl, footerText } =
       req.body;
+    const senderEmail = process.env.EMAIL_USER;
+    const senderPass = process.env.EMAIL_PASS;
 
     //validation
     if (!to || !subject) {
@@ -30,11 +33,20 @@ export const emailSend = async (req, res) => {
     // send email
     const result = await sendEmail(
       { to, subject, title, content, buttonText, buttonUrl, footerText },
-      process.env.EMAIL_USER,
-      process.env.EMAIL_PASS
+      senderEmail,
+      senderPass
     );
 
+    // {
+    //  success,
+    //  messageId,
+    //  message,
+    // }
+    console.log(result);
+
     if (result.success) {
+      const slq = saveEmail({ messageId: result.messageId, senderEmail, to, subject });
+      console.log(slq);
       return res.status(200).json(result);
     } else {
       return res.status(500).json(result);
