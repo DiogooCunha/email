@@ -10,6 +10,6 @@ export const saveEmail = (data) => {
 };
 
 export const getAllEmails = (senderEmail) => {
-  const stmt = db.prepare("SELECT * FROM emails WHERE sender = ?");
+  const stmt = db.prepare("SELECT * FROM emails WHERE sender = ? ORDER BY sent_at DESC");
   return stmt.all(senderEmail);
 };
