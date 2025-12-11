@@ -50,6 +50,7 @@ export const emailSend = async (req, res) => {
         senderEmail,
         to,
         subject,
+        content,
       });
       console.log(slq);
       return res.status(200).json(result);

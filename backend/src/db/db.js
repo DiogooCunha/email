@@ -6,9 +6,10 @@ db.exec(`
         CREATE TABLE IF NOT EXISTS emails (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             message_id TEXT,
-            sender TEXT,
-            recipient TEXT,
+            sender TEXT NOT NULL,
+            recipient TEXT NOT NULL,
             subject TEXT, 
+            content TEXT,
             sent_at DATETIME DEFAULT CURRENT_TIMESTAMP   
         );
     `);

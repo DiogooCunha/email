@@ -2,11 +2,11 @@ import { db } from "../db/db.js";
 
 export const saveEmail = (data) => {
   const stmt = db.prepare(
-    `INSERT INTO emails (message_id, sender, recipient, subject)
-     VALUES (?, ?, ?, ?)
+    `INSERT INTO emails (message_id, sender, recipient, subject, content)
+     VALUES (?, ?, ?, ?, ?)
     `
   );
-  return stmt.run(data.messageId, data.senderEmail, data.to, data.subject);
+  return stmt.run(data.messageId, data.senderEmail, data.to, data.subject, data.content);
 };
 
 export const getAllEmails = (senderEmail) => {
