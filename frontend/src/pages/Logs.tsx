@@ -1,15 +1,42 @@
 import EmailsTable from "@/components/shared/EmailsTable";
 import EmptyComp from "@/components/shared/EmptyComp";
+import { formatEmailDate } from "@/utils/format/formatDate";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const Logs = () => {
-  const emailQuantity = 1;
+  const [logs, setLogs] = useState([]);
+
+  async function gatherLogs() {
+    try {
+      const res = await fetch("http://localhost:3333/api/logs", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const resultado = await res.json();
+
+      if (!res.ok) {
+        toast.warning("Something went wrong", {
+          description: formatEmailDate(new Date()),
+        });
+      }
+      setLogs(resultado);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    gatherLogs();
+  }, []);
 
   return (
-    <div className="flex justify-center w-full">
-      {emailQuantity > 0 ? (
-        <EmailsTable />
+    <div className='flex justify-center w-full'>
+      {logs.length > 0 ? (
+        <EmailsTable logs={logs} />
       ) : (
-        <div className="flex justify-center items-center min-h-[60vh] w-full">
+        <div className='flex justify-center items-center min-h-[60vh] w-full'>
           <EmptyComp />
         </div>
       )}

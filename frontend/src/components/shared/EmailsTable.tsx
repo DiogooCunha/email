@@ -14,7 +14,20 @@ import {
   TableRow,
 } from "../ui/table";
 
-const EmailsTable = () => {
+interface log {
+  id: number;
+  message_id: string;
+  sender: string;
+  recipient: string;
+  subject: string;
+  sent_at: string;
+}
+
+interface EmailsTableProps {
+  logs: log[];
+}
+
+const EmailsTable = ({ logs }: EmailsTableProps) => {
   return (
     <Card className='w-full'>
       <CardHeader>
@@ -34,12 +47,14 @@ const EmailsTable = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell className='font-bold'>3</TableCell>
-              <TableCell>diogocunha.jlle@gmail.com</TableCell>
-              <TableCell>TEST</TableCell>
-              <TableCell className='text-right'>2020-19-01</TableCell>
-            </TableRow>
+            {logs.map((log) => (
+              <TableRow key={log.id}>
+                <TableCell className='font-bold'>{log.id}</TableCell>
+                <TableCell>{log.recipient}</TableCell>
+                <TableCell>{log.subject}</TableCell>
+                <TableCell className='text-right'>{log.sent_at}</TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </CardContent>
