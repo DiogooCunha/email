@@ -1,3 +1,4 @@
+import { formatRelativeTime } from "@/utils/format/formatDate";
 import {
   Card,
   CardContent,
@@ -13,21 +14,12 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-
-interface log {
-  id: number;
-  message_id: string;
-  sender: string;
-  recipient: string;
-  subject: string;
-  sent_at: string;
-}
-
-interface EmailsTableProps {
-  logs: log[];
-}
+import { useNavigate } from "react-router-dom";
+import type { EmailsTableProps } from "@/type/email";
 
 const EmailsTable = ({ logs }: EmailsTableProps) => {
+  const navigate = useNavigate();
+
   return (
     <Card className='w-full'>
       <CardHeader>
@@ -48,11 +40,17 @@ const EmailsTable = ({ logs }: EmailsTableProps) => {
           </TableHeader>
           <TableBody>
             {logs.map((log) => (
-              <TableRow key={log.id}>
+              <TableRow
+                key={log.id}
+                className='cursor-pointer'
+                onClick={() => navigate(`/logs/${log.id}`)}
+              >
                 <TableCell className='font-bold'>{log.id}</TableCell>
                 <TableCell>{log.recipient}</TableCell>
                 <TableCell>{log.subject}</TableCell>
-                <TableCell className='text-right'>{log.sent_at}</TableCell>
+                <TableCell className='text-right'>
+                  {formatRelativeTime(log.sent_at)}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

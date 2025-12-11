@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <header className='w-screen fixed top-0 left-0 flex justify-center items-center min-h-[7vh]'>
-      <nav className='container mx-auto flex items-center justify-between px-5 2xl:px-0'>
+      <nav className='container mx-6 flex items-center justify-between px-5 2xl:px-0'>
         <Mail className='cursor-pointer hover:-translate-y-0.5 transition-all duration-300 ease-in-out size-5' />
 
         <ul className='flex justify-center items-center gap-8'>

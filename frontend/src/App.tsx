@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/shared/Navbar";
 import Logs from "./pages/Logs";
 import SendEmail from "./pages/SendEmail";
+import LogsDetailsPage from "./pages/LogsDetailsPage";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <Routes>
           <Route path='/send-email' element={<SendEmail />} />
           <Route path='/logs' element={<Logs />} />
+          <Route path='/logs/:id' element={<LogsDetailsPage />} />
         </Routes>
       </div>
     </div>
