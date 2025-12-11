@@ -8,3 +8,8 @@ export const saveEmail = (data) => {
   );
   return stmt.run(data.messageId, data.senderEmail, data.to, data.subject);
 };
+
+export const getAllEmails = (senderEmail) => {
+  const stmt = db.prepare("SELECT * FROM emails WHERE sender = ?");
+  return stmt.all(senderEmail);
+};
