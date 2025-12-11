@@ -13,3 +13,8 @@ export const getAllEmails = (senderEmail) => {
   const stmt = db.prepare("SELECT * FROM emails WHERE sender = ? ORDER BY sent_at DESC");
   return stmt.all(senderEmail);
 };
+
+export const getSingleEmail = (senderEmail, id) => {
+  const stmt = db.prepare("SELECT * FROM emails WHERE sender = ? AND id = ?");
+  return stmt.get(senderEmail, id);
+}

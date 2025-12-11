@@ -1,4 +1,4 @@
-import { getAllEmails, saveEmail } from "../models/email.models.js";
+import { getAllEmails, getSingleEmail, saveEmail } from "../models/email.models.js";
 import { sendEmail } from "../utils/mail.js";
 
 export const email = (req, res) => {
@@ -66,7 +66,7 @@ export const emailSend = async (req, res) => {
   }
 };
 
-export const emailLog = (req, res) => {
+export const emailLogs = (req, res) => {
   try {
     const senderEmail = process.env.EMAIL_USER;
 
@@ -77,6 +77,25 @@ export const emailLog = (req, res) => {
     return res.status(200).json(result);
   } catch (error) {
     console.error("Error in /logs route:", error);
+    res.status(500).json({
+      success: false,
+      error: "Internal server error",
+      details: error.message,
+    });
+  }
+};
+
+export const singleEmailLog = (req, res) => {
+  try {
+    const senderEmail = process.env.EMAIL_USER;
+    const id = req.params.id;
+
+    const result = getSingleEmail(senderEmail, id);
+    console.log(result);
+
+    return res.status(200).json(result);
+  } catch (error) {
+    console.error("Error in /logs/:id route:", error);
     res.status(500).json({
       success: false,
       error: "Internal server error",
