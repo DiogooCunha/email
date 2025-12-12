@@ -7,7 +7,7 @@ import cors from "cors";
 import emailRoutes from "./routes/email.routes.js";
 
 const app = express();
-const port = 3333;
+const port = process.env.PORT || 3333;
 
 // Middleware
 app.use(cors());

@@ -9,7 +9,7 @@ const Logs = () => {
 
   async function gatherLogs() {
     try {
-      const res = await fetch("http://localhost:3333/api/logs", {
+      const res = await fetch("https://email-6tlo.onrender.com", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });

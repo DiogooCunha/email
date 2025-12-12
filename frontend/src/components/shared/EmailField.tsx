@@ -24,7 +24,7 @@ const EmailField = () => {
 
   async function sendEmail() {
     try {
-      const res = await fetch("http://localhost:3333/api/send-email", {
+      const res = await fetch("https://email-6tlo.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
